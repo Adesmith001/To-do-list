@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0F084B;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+    margin-right: 80px;
+}
+
+#menu-icon{
+    color: #fff;
+    float: left;
+    margin-left: 70px;
+    font-size: 24px;
+}
+
+/* Style for the task input container */
+.task-input {
+    display: flex;
+}
+
+/* Style for the input field */
+#task-title {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #DEDEE0;
+}
+
+/* Style for the select dropdown */
+#task-category {
+    width: 50px; /* Adjust the width as needed */
+}
+
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Hidden by default */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    transition: left 0.3s;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0;
+    margin-bottom: 10px;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.sidebar #close-sidebar{
+    margin-left: 200px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #DEDEE0;
+
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button i{
+    font-size: 1.3em;
+}
+
+button:hover {
+    opacity: .8;
+}
+
+#task-list {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+button.delete {
+    color: #fff;
+    border: none;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px){
+    h1{
+        margin-right: 0px;
+    }
+    #menu-icon{
+        color: #fff;
+        float: left;
+        margin-left: 0px;
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>To-Do List</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span id="menu-icon" class="bx bx-menu"></span>
+            <h1>To-Do List</h1>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <button id="close-sidebar" class="bx bx-x"></button>
+            <a href="#" id="recycle-bin">Recycle Bin</a>
+            <a href="#" id="important-tasks">Important</a>
+            <a href="#" id="completed-tasks">Completed</a>
+        </div>
+        <form id="task-form">
+            <div class="task-input">
+                <input type="text" id="task-title" placeholder="Add a new task..." required>
+            </div>
+            <button type="submit"><i class='bx bx-plus'></i></button>
+        </form>
+        
+        <div id="task-list"></div>
+        <button id="clear-completed">Clear Completed</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
