@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Task-related elements
     const taskForm = document.getElementById("task-form");
     const taskList = document.getElementById("task-list");
     const clearCompletedBtn = document.getElementById("clear-completed");
 
-    // Load tasks from local storage
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
     function saveTasks() {
@@ -31,22 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-   // Add new task
-taskForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const taskInput = document.getElementById("task-title"); // Updated this line
-    const taskTitle = taskInput.value.trim(); // Updated this line
+    taskForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const taskInput = document.getElementById("task-title");
+        const taskTitle = taskInput.value.trim();
 
-    if (taskTitle !== "") {
-        tasks.push({ title: taskTitle, completed: false });
-        saveTasks();
-        renderTasks();
-        taskInput.value = "";
-    }
-});
+        if (taskTitle !== "") {
+            tasks.push({ title: taskTitle, completed: false });
+            saveTasks();
+            renderTasks();
+            taskInput.value = "";
+        }
+    });
 
-
-    // Toggle task completion
     taskList.addEventListener("change", function (e) {
         if (e.target.matches("input[type='checkbox']")) {
             const index = e.target.dataset.index;
@@ -56,7 +51,6 @@ taskForm.addEventListener("submit", function (e) {
         }
     });
 
-    // Delete task
     taskList.addEventListener("click", function (e) {
         if (e.target.matches("button.delete")) {
             const index = e.target.dataset.index;
@@ -66,7 +60,6 @@ taskForm.addEventListener("submit", function (e) {
         }
     });
 
-    // Clear completed tasks
     clearCompletedBtn.addEventListener("click", function () {
         tasks.forEach((task, index) => {
             if (task.completed) {
@@ -77,7 +70,6 @@ taskForm.addEventListener("submit", function (e) {
         renderTasks();
     });
 
-    // Sidebar-related elements
     const menuIcon = document.getElementById("menu-icon");
     const closeSidebarBtn = document.getElementById("close-sidebar");
     const sidebar = document.getElementById("sidebar");
@@ -87,26 +79,19 @@ taskForm.addEventListener("submit", function (e) {
 
     let sidebarOpen = false;
 
-    // Function to open sidebar
     function openSidebar() {
         sidebarOpen = true;
         sidebar.style.left = "0";
     }
 
-    // Function to close sidebar
     function closeSidebar() {
         sidebarOpen = false;
         sidebar.style.left = "-300px";
     }
 
-    // Toggle sidebar when menu icon is clicked
     menuIcon.addEventListener("click", openSidebar);
 
-    // Close sidebar when close button is clicked
     closeSidebarBtn.addEventListener("click", closeSidebar);
-
-    // You can add event listeners to the sidebar links to handle their actions.
-    // For example, clicking "Recycle Bin" can show deleted tasks, and so on.
 
     recycleBinLink.addEventListener("click", function () {
         displayDeletedTasks();
