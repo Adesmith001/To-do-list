@@ -1,0 +1,301 @@
+/* Theming START */
+:root {
+  --bg-primary: #0F084B; /* Original page background */
+  --text-primary: #ffffff; /* Original text on page background */
+  --bg-container: #ffffff; /* Original container background */
+  --text-container-primary: #333333; /* Original text in container */
+  --bg-input: #DEDEE0;
+  --text-input: #000000;
+  --button-primary-bg: #007bff;
+  --button-primary-text: #ffffff;
+  --task-item-bg: #ffffff;
+  --task-item-text: #333333;
+  --task-item-completed-text: #888888;
+  --task-item-border-important: #ffc107;
+  --sidebar-bg: #333333;
+  --sidebar-text: #ffffff;
+  --sidebar-active-link-bg: #555555; /* Added for active link */
+  --focus-outline: #007bff;
+  --focus-outline-dark-bg: #79ceff;
+
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Specific colors from original theme */
+  --original-page-bg: #0F084B;
+  --original-header-text: #fff;
+  --original-task-input-bg: #DEDEE0;
+  --original-button-bg: #007bff;
+  --original-button-delete-bg: #dc3545;
+  --original-button-clear-bg: #ffc107;
+  --original-button-clear-text: #333;
+  --original-sidebar-bg: #333;
+  --original-sidebar-text: #fff;
+}
+
+body[data-theme='dark'] {
+  --bg-primary: #1a1a2e; /* Darker blue/purple */
+  --text-primary: #e0e0e0;
+  --bg-container: #2a2a3e; /* Darker container */
+  --text-container-primary: #f0f0f0;
+  --bg-input: #3a3a4e;
+  --text-input: #ffffff;
+  --button-primary-bg: #0056b3; /* Darker primary button */
+  --button-primary-text: #ffffff;
+  --task-item-bg: #3a3a4e;
+  --task-item-text: #f0f0f0;
+  --task-item-completed-text: #aaaaaa;
+  --task-item-border-important: #e0ac00; /* Slightly adjusted yellow */
+  --sidebar-bg: #232333;
+  --sidebar-text: #e0e0e0;
+  --sidebar-active-link-bg: #404050;
+  --focus-outline: #79ceff; /* Light blue for dark theme focus */
+  --focus-outline-dark-bg: #0056b3; /* Darker for elements on light parts of dark theme */
+
+  --shadow-color: rgba(0, 0, 0, 0.3);
+
+  --original-button-delete-bg: #c82333;
+  --original-button-clear-bg: #e0ac00;
+  --original-button-clear-text: #000;
+
+}
+
+/* Apply variables */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--bg-container); /* Use variable */
+  color: var(--text-container-primary); /* Use variable */
+  box-shadow: 0 0 10px var(--shadow-color);
+  border-radius: 8px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: var(--original-header-text);
+}
+.header h1 { font-size: 24px; margin: 0; }
+#menu-icon {
+  color: var(--original-header-text);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: fixed; top: 0; left: -300px;
+  width: 250px; height: 100%;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  transition: left 0.3s ease-in-out;
+  padding: 20px; display: flex; flex-direction: column; align-items: flex-start;
+  z-index: 1000;
+}
+.sidebar a {
+  color: var(--sidebar-text);
+  text-decoration: none; margin: 10px 0;
+}
+.sidebar a:hover { text-decoration: underline; font-weight: bold; }
+.sidebar a.active {
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: var(--sidebar-active-link-bg);
+}
+#close-sidebar {
+  align-self: flex-end; background: none; border: none;
+  color: var(--sidebar-text);
+  font-size: 24px; padding: 0; margin-bottom: 10px;
+}
+#close-sidebar:hover { opacity: 0.7; }
+
+
+#task-form { display: flex; justify-content: center; align-items: center; margin-bottom: 20px; }
+.task-input { display: flex; flex-grow: 1; }
+#task-title-input {
+  flex-grow: 1; padding: 10px; margin-right: 10px;
+  background-color: var(--bg-input);
+  color: var(--text-input);
+  border: 1px solid var(--text-input);
+  border-radius: 4px;
+}
+.task-item-edit-input {
+  flex-grow: 1; padding: 8px;
+  background-color: var(--bg-input);
+  color: var(--text-input);
+  border: 1px solid var(--button-primary-bg);
+  border-radius: 4px; font-size: inherit; font-family: inherit;
+}
+
+
+button {
+  padding: 10px 15px;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border: none; border-radius: 4px;
+  cursor: pointer; font-size: 14px; transition: opacity 0.2s;
+}
+button i.bx { font-size: 1.3em; vertical-align: middle; }
+button:hover { opacity: 0.8; }
+
+#task-form button[type="submit"] {
+   background-color: var(--original-button-bg);
+   color: var(--button-primary-text);
+}
+#clear-completed {
+  margin-top: 20px;
+  background-color: var(--original-button-clear-bg);
+  color: var(--original-button-clear-text);
+}
+
+
+#task-list { margin-top: 20px; text-align: left; }
+.task-item {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 10px; padding: 10px;
+  background-color: var(--task-item-bg);
+  color: var(--task-item-text);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+.task-item > span { /* This is the title span */
+  flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  padding-right: 10px;
+}
+.task-item.completed > span,
+.task-item.deleted-visual-cue > span { /* Target title span specifically */
+  color: var(--task-item-completed-text);
+  text-decoration: line-through;
+}
+.task-item.important {
+ border-left: 3px solid var(--task-item-border-important);
+}
+.task-item.important > span { /* Target title span */
+  font-weight: bold;
+}
+
+.task-item input[type="checkbox"] { margin-right: 10px; }
+
+.task-item button.delete {
+  background-color: var(--original-button-delete-bg);
+  color: var(--button-primary-text);
+  padding: 5px 10px; border-radius: 4px; cursor: pointer; border:none;
+}
+.task-item button.delete i.bx { font-size: 1em; }
+.task-item button.restore {
+  background-color: #28a745;
+  color: white;
+  margin-right: 5px;
+}
+.task-item button.restore:hover { opacity: 0.8; }
+.task-item button.bx-star, .task-item button.bxs-star {
+  background: none; border: none;
+  color: var(--task-item-border-important);
+  font-size: 1.2em; padding: 0 5px; vertical-align: middle;
+}
+.task-item button.bx-star:hover, .task-item button.bxs-star:hover { opacity: 0.7; }
+
+.task-item.dragging {
+  background-color: color-mix(in srgb, var(--task-item-bg) 80%, var(--button-primary-bg) 20%);
+  box-shadow: 0 3px 6px var(--shadow-color);
+}
+.task-item.dragging *:focus { outline: none; }
+
+
+*:focus {
+  outline: 2px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+button:focus, input:focus, a:focus, [tabindex]:focus {
+  outline: 2px solid var(--focus-outline); /* Ensure this is applied */
+  outline-offset: 2px;
+}
+.sidebar *:focus, .header *:focus {
+  outline-color: var(--focus-outline-dark-bg);
+}
+
+
+@media (max-width: 768px) {
+  .container { max-width: 100%; padding: 10px; }
+  .header h1 { font-size: 20px; }
+  #menu-icon { font-size: 22px; }
+  #task-form { flex-direction: column; }
+  #task-title-input { margin-right: 0; margin-bottom: 10px; width:100%; box-sizing: border-box;}
+  #task-form button[type="submit"] { width: 100%; }
+}
+
+@media (max-width: 420px) {
+  .header { padding: 0 10px; }
+  .header h1 { font-size: 18px; }
+  #menu-icon { font-size: 20px; }
+  .task-item { flex-direction: column; align-items: flex-start; }
+  .task-item > span, .task-item > .task-item-edit-input { /* Title span or edit input */
+    width: 100%; box-sizing: border-box; margin-bottom: 10px; white-space: normal; margin-left: 0;
+  }
+  .task-item-controls { width: 100%; justify-content: space-between; }
+  .task-item-controls > * { margin-left: 0; margin-right: 5px; }
+  .task-item-controls > *:last-child { margin-right: 0; }
+  .sidebar { width: 200px; left: -250px; }
+  .drag-handle { display: none; }
+}
+
+.sidebar.open { left: 0; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0; }
+
+.drag-handle {
+  display: inline-block; padding: 0 5px; cursor: grab;
+  color: #ccc;
+}
+.drag-handle:focus { color: var(--text-container-primary); }
+.task-item > .drag-handle + span, .task-item > .drag-handle + .task-item-edit-input { margin-left: 5px; }
+.task-item.dragging .drag-handle { cursor: grabbing; }
+
+.task-item-controls {
+  display: flex; align-items: center; flex-shrink: 0;
+}
+.task-item-controls > * { margin-left: 5px; }
+.task-item-controls input[type="checkbox"] { margin-left: 0; }
+
+/* Theming END */
+/* Any remaining specific structural CSS from original file can be below if necessary, */
+/* but most should be covered or integrated above. */
+/* For example, .bx might have some global settings if not handled by CDN */
+.bx {
+  /* Ensure Boxicons are displayed correctly if needed */
+}
+
+.theme-toggle-button {
+  background: none;
+  border: none;
+  color: var(--original-header-text); /* Match header icon color */
+  font-size: 24px; /* Match menu icon size */
+  cursor: pointer;
+  padding: 0 5px;
+}
+.theme-toggle-button:hover {
+  opacity: 0.7;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between; /* Ensure title/menu and theme button are spaced out */
+  align-items: center;
+}
+.header > div { /* Wrapper for menu + title */
+  display: flex;
+  align-items: center;
+}
+.header h1 {
+  margin-left: 10px; /* Space between menu icon and title */
+}
